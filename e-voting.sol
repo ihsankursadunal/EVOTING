@@ -39,11 +39,18 @@ contract EVOTING{
         }else{
             voters[msg.sender].isVoted = true;
             voters[msg.sender].my_candidate = index;
-            candidates[index].voteCount += 1;   
+            candidates[index].voteCount += 1;  
         }
     }
         
-    function result() public view returns (uint256 winer) {
+    function atTheMoment(uint a) public view returns(int){
+        if(a>=candidates.length){
+            return -1;
+        }
+        return int(candidates[a].voteCount);
+    }
+    
+    function result() public view returns (uint256 winer, uint8 my_candidate) {
         uint256 max = 0;
         winer=0;
         for (uint8 cand = 0; cand < candidates.length;cand++){
@@ -52,8 +59,8 @@ contract EVOTING{
                 winer = cand;
             }
     
-            
         }
+        my_candidate = voters[msg.sender].my_candidate;
     }
     
 }
