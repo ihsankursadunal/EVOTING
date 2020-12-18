@@ -38,9 +38,8 @@ contract EVOTING{
             return;
         }else{
             voters[msg.sender].isVoted = true;
-            sender.isVoted = true;
-            sender.my_candidate = index;
-            candidates[index].voteCount += 1;  
+            voters[msg.sender].my_candidate = index;
+            candidates[index].voteCount += 1;   
         }
     }
         
