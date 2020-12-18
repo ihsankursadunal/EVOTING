@@ -37,7 +37,7 @@ contract EVOTING{
         if(index >= candidates.length){
             return;
         }else{
-            Voter storage sender = voters[msg.sender];
+            voters[msg.sender].isVoted = true;
             sender.isVoted = true;
             sender.my_candidate = index;
             candidates[index].voteCount += 1;  
